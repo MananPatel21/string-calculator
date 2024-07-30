@@ -19,4 +19,12 @@ public class StringCalculatorTest {
         assertEquals(21, calculator.add("21"));
     }
 
+    // Testing for 2 numbers
+    @Test
+    public void testAddTwoNumbers() {
+        StringCalculator calculator = new StringCalculator();
+        assertEquals(63, calculator.add("18,45"));
+    }
+
+
 }
