@@ -26,5 +26,11 @@ public class StringCalculatorTest {
         assertEquals(63, calculator.add("18,45"));
     }
 
+    // Testing for multiple numbers
+    @Test
+    public void testAddMultipleNumbers() {
+        StringCalculator calculator = new StringCalculator();
+        assertEquals(96, calculator.add("18,45,33"));
+    }
 
 }
