@@ -26,11 +26,18 @@ public class StringCalculatorTest {
         assertEquals(63, calculator.add("18,45"));
     }
 
-    // Testing for multiple numbers
+    // Testing for multiple numbers (Contains ,)
     @Test
     public void testAddMultipleNumbers() {
         StringCalculator calculator = new StringCalculator();
         assertEquals(96, calculator.add("18,45,33"));
+    }
+
+    // Testing for multiple numbers (Contains \n & ,)
+    @Test
+    public void testAddWithNewLines() {
+        StringCalculator calculator = new StringCalculator();
+        assertEquals(96, calculator.add("18\n45,33"));
     }
 
 }

@@ -13,7 +13,7 @@ public class StringCalculator{
         }
 
         // Splitting numbers that are separated by ','
-        String[] parts = numbers.split(",");
+        String[] parts = numbers.split("[,\n]");
         int sum = 0;
 
         for(String part : parts){
