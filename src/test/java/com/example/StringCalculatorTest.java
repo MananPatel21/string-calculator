@@ -47,4 +47,11 @@ public class StringCalculatorTest {
         assertEquals(63, calculator.add("//;\n18;45"));
     }
 
+    // Testing for multiple numbers (-ve numbers are present)
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddWithNegativeNumbers() {
+        StringCalculator calculator = new StringCalculator();
+        calculator.add("//;\n18;45;-99;-100");
+    }
+
 }

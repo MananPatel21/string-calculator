@@ -2,7 +2,8 @@ package com.example;
 
 public class StringCalculator{
     public static void main(String[] args){
-        
+        // StringCalculator calculator = new StringCalculator();
+        // calculator.add("//;\n18;45;-99;-100");
     }
 
     public int add(String numbers){
@@ -27,9 +28,24 @@ public class StringCalculator{
         // Splitting numbers that are separated by ','
         String[] parts = numbers.split(delimiter);
         int sum = 0;
+        // For storing -ve numbers
+        StringBuilder negativeNumbers = new StringBuilder();
 
         for(String part : parts){
+            // Checking if number is -ve
+            int num = Integer.parseInt(part);
+            if(num < 0){
+                if(negativeNumbers.length() > 0){
+                    negativeNumbers.append(", ");
+                }
+                negativeNumbers.append(num);
+            }
             sum += Integer.parseInt(part);
+        }
+
+        // Throwing exception if -ve number(s) is/are present
+        if(negativeNumbers.length() > 0){
+            throw new IllegalArgumentException("Negative number(s) is/are not allowed : " + negativeNumbers + "!! Try again :)");
         }
 
         return sum;
