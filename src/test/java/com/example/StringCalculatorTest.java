@@ -54,4 +54,11 @@ public class StringCalculatorTest {
         calculator.add("//;\n18;45;-99;-100");
     }
 
+    // Testing for multiple numbers (non-numeric are present)
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddWithNonNumeric() {
+        StringCalculator calculator = new StringCalculator();
+        calculator.add("//;\n18,45");
+    }
+
 }

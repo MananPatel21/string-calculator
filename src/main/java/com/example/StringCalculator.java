@@ -1,9 +1,35 @@
 package com.example;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class StringCalculator{
-    public static void main(String[] args){
-        // StringCalculator calculator = new StringCalculator();
-        // calculator.add("//;\n18;45;-99;-100");
+    public static void main(String[] args) {
+        StringCalculator calculator = new StringCalculator();
+        List<String> testInputs = Arrays.asList(
+            "",
+            "21",
+            "18,45",
+            "18,45,33",
+            "18\n45,33",
+            "//;\n18;45",
+            "//;\n18,45",
+            "18,abc,45",
+            "//;\n18;45;-99;-100"
+        );
+
+        System.out.println("String Calculator - Processing list of inputs:");
+        System.out.println("----------------------------------------------------------------");
+
+        for(String input : testInputs){
+            try{
+                int result = calculator.add(input);
+                System.out.println("Input: \"" + input + "\" | Output: " + result);
+            }catch (IllegalArgumentException e){
+                System.out.println("Input: \"" + input + "\" | " + e.getMessage());
+            }
+            System.out.println("----------------------------------------------------------------");
+        }
     }
 
     public int add(String numbers){
@@ -32,8 +58,12 @@ public class StringCalculator{
         StringBuilder negativeNumbers = new StringBuilder();
 
         for(String part : parts){
-            // Checking if number is -ve
+            // Check if non-numeric
+            if(!isNumeric(part)){
+                throw new IllegalArgumentException("Invalid input: non-numeric value encountered - \"" + part + "\".");
+            }
             int num = Integer.parseInt(part);
+            // Checking if number is -ve
             if(num < 0){
                 if(negativeNumbers.length() > 0){
                     negativeNumbers.append(", ");
@@ -51,4 +81,15 @@ public class StringCalculator{
         return sum;
 
     }
+
+    // Check if numeric or not
+    private boolean isNumeric(String str){
+        try{
+            Integer.parseInt(str);
+            return true;
+        }catch(NumberFormatException e){
+            return false;
+        }
+    }
+
 }
