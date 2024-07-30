@@ -40,4 +40,11 @@ public class StringCalculatorTest {
         assertEquals(96, calculator.add("18\n45,33"));
     }
 
+    // Testing for multiple numbers (Using new delimiters)
+    @Test
+    public void testAddWithCustomDelimiter() {
+        StringCalculator calculator = new StringCalculator();
+        assertEquals(63, calculator.add("//;\n18;45"));
+    }
+
 }
